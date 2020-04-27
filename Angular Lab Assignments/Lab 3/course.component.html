@@ -1,0 +1,60 @@
+<div class="container border">
+    <div class="row">
+        <div class="col-lg-12">
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+          <h1 class ="bg-primary text-center"> Product Details form</h1>
+          <P class="bg-warning text-primary" >   {{courseForm.value | json}} </P>
+          <hr>
+          <!--        <p>{{ccourse | json}} </p>   -->
+          <form #courseForm="ngForm" (ngSubmit)="saveData()" novalidate>
+            <div class="form-group">
+              <label for="cid">Product ID:</label><br>
+              <input type="text" class="form-control" name="pid" [(ngModel)]="ccourse.courseID" placeholder=" Enter the Product id"/>
+            </div>
+            <div class="form-group">
+               <label for="pname">Product Name  :   </label><br>
+               <input type="text" [class.is-invalid]="pname.invalid" class="form-control is-invalid" required="required" minlength="5" name="pname" #pname="ngModel" [(ngModel)]="ccourse.personName" placeholder=" Enter Product name"/>
+               <span [class.d-none]="pname.valid">Product Name is Mandatory</span>
+            </div>
+            <div class="form-group">
+               <label for="course">Product Cateogry:  </label><br>
+               <select name="Prod_cateogry" class="form-control" [(ngModel)]="ccourse.courseName">
+                 <option *ngFor="let c of courses">{{c}}</option>
+               </select>
+            </div>
+              <div class="form-group">
+                 <label for="email">Email:    </label><br>
+                 <input #email="ngModel" type="email" class="form-control is-invalid" [class.is-invalid]="email.invalid" required="required" name="email" [(ngModel)]="ccourse.email" placeholder=" Enter your email id"/>
+                 <span [class.d-none]="email.valid" class="text-danger">Email is Mandatory</span>
+              </div>
+               <div class="form-group">
+               <label for="phone">Phone:</label><br>
+                <input #phone="ngModel"  maxlength="10" type="tel" class="form-control is-invalid" [class.is-invalid]="phone.invalid" required="required" name="phone" [(ngModel)]="ccourse.phone" placeholder=" Enter your phone no."/>
+                <span [class.d-none]="phone.valid" class="text-danger">Phone is Mandatory</span>
+               </div>
+               <div class="form-group">
+                <p>Product Online</p>
+               <input type="radio" id="male" name="gender" value="male">
+               <label for="male">Yes</label>
+               <input type="radio" id="female" name="gender" value="female">
+               <label for="female">No</label>
+               </div>
+               <div class="form-group">
+                  <p>Availables Stores</p>
+                  <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                  <label for="vehicle1"> Big Bazar </label>
+                  <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                  <label for="vehicle2">  Dmart  </label>
+                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                  <label for="vehicle3">  Reliance  </label>
+                  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                  <label for="vehicle3">  Megastore</label>
+               </div>
+               <button tye="submit" class="btn btn-primary">Save Info</button>
+          </form>
+          <br><br><br>
+          </div>
+    </div>
+</div>
+  
